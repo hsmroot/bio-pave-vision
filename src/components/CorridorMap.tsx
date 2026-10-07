@@ -30,7 +30,7 @@ export default function CorridorMap({ segment, level, onSelect }: { segment: Seg
     const map = mapRef.current;
     if (!map) return;
     const css = getComputedStyle(document.documentElement);
-    const color = css.getPropertyValue(RISK_VAR[level]).trim() || "teal";
+    const color = css.getPropertyValue(RISK_VAR[level] ?? "--success").trim() || "teal";
     const muted = css.getPropertyValue("--muted-foreground").trim();
     layerRef.current.clearLayers();
     SEGMENTS.forEach((s) => {
