@@ -218,7 +218,7 @@ function Index() {
                   <CartesianGrid stroke="var(--border)" />
                   <XAxis dataKey="f" type="number" scale="log" domain={[0.01, 100]} ticks={[0.01, 0.1, 1, 10, 100]} stroke="var(--muted-foreground)" fontSize={10} />
                   <YAxis scale="log" domain={["auto", "auto"]} stroke="var(--muted-foreground)" fontSize={10} tickFormatter={(v) => v >= 1000 ? `${(v / 1000).toFixed(0)}M` : v.toFixed(1)} allowDataOverflow />
-                  <Tooltip contentStyle={{ background: "var(--card)", border: "1px solid var(--border)" }} formatter={(v: number) => `${v.toFixed(2)} kPa`} labelFormatter={(f: number) => `${f.toFixed(2)} Hz`} />
+                  <Tooltip contentStyle={{ background: "var(--card)", border: "1px solid var(--border)" }} formatter={(v) => `${Number(v).toFixed(2)} kPa`} labelFormatter={(f) => `${Number(f).toFixed(2)} Hz`} />
                   <Line dataKey="ref" name="Pen 80/100" stroke="var(--chart-5)" dot={false} strokeDasharray="4 3" />
                   <Line dataKey="bio" name={binder.short} stroke="var(--chart-1)" dot={false} strokeWidth={2} />
                   <ReferenceDot x={Math.min(100, calc.freq)} y={calc.bio.G} r={6} fill="var(--accent)" stroke="none" className="animate-blink" />
