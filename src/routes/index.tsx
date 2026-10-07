@@ -45,7 +45,7 @@ function NzClock() {
 }
 
 function Index() {
-  const [segId, setSegId] = useState(SEGMENTS[0].id);
+  const [segId, setSegId] = useState(SEGMENTS[0]!.id);
   const [binderId, setBinderId] = useState<BinderId>("lignin");
   const [mode, setMode] = useState<TrafficMode>("live");
   const [override, setOverride] = useState<{ speed?: number; hcv?: number }>({});
