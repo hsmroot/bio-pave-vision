@@ -219,7 +219,7 @@ function Index() {
                   <XAxis dataKey="f" type="number" scale="log" domain={[0.01, 100]} ticks={[0.01, 0.1, 1, 10, 100]} stroke="var(--muted-foreground)" fontSize={10} />
                   <YAxis scale="log" domain={["auto", "auto"]} stroke="var(--muted-foreground)" fontSize={10} tickFormatter={(v) => v >= 1000 ? `${(v / 1000).toFixed(0)}M` : v.toFixed(1)} allowDataOverflow />
                   <Tooltip contentStyle={{ background: "var(--card)", border: "1px solid var(--border)" }} formatter={(v) => `${Number(v).toFixed(2)} kPa`} labelFormatter={(f) => `${Number(f).toFixed(2)} Hz`} />
-                  <Line dataKey="ref" name="Pen 80/100" stroke="var(--chart-5)" dot={false} strokeDasharray="4 3" />
+                  <Line dataKey="baseline" name="Pen 80/100" stroke="var(--chart-5)" dot={false} strokeDasharray="4 3" />
                   <Line dataKey="bio" name={binder.short} stroke="var(--chart-1)" dot={false} strokeWidth={2} />
                   <ReferenceDot x={Math.min(100, calc.freq)} y={calc.bio.G} r={6} fill="var(--accent)" stroke="none" className="animate-blink" />
                 </LineChart>
@@ -236,15 +236,15 @@ function Index() {
             <div className="h-48">
               <ResponsiveContainer>
                 <BarChart data={[
-                  { name: "Jnr (kPa⁻¹)", ref: +calc.jnrRef.toFixed(2), bio: +calc.jnrBio.toFixed(2) },
-                  { name: "R / 10 (%)", ref: +(calc.recRef / 10).toFixed(2), bio: +(calc.recBio / 10).toFixed(2) },
+                  { name: "Jnr (kPa⁻¹)", baseline: +calc.jnrRef.toFixed(2), bio: +calc.jnrBio.toFixed(2) },
+                  { name: "R / 10 (%)", baseline: +(calc.recRef / 10).toFixed(2), bio: +(calc.recBio / 10).toFixed(2) },
                 ]}>
                   <CartesianGrid stroke="var(--border)" vertical={false} />
                   <XAxis dataKey="name" stroke="var(--muted-foreground)" fontSize={10} />
                   <YAxis stroke="var(--muted-foreground)" fontSize={10} />
                   <Tooltip contentStyle={{ background: "var(--card)", border: "1px solid var(--border)" }} />
-                  
-                  <Bar dataKey="ref" name="Pen 80/100" fill="var(--chart-5)" radius={[3, 3, 0, 0]} />
+                  <Legend wrapperStyle={{ fontSize: 11 }} />
+                  <Bar dataKey="baseline" name="Pen 80/100" fill="var(--chart-5)" radius={[3, 3, 0, 0]} />
                   <Bar dataKey="bio" name={binder.short} fill="var(--chart-1)" radius={[3, 3, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
