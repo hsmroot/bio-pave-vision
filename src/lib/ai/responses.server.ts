@@ -44,6 +44,15 @@ export function createResponsesCall(
   return {
     result,
     response: () =>
-      withLovableAiGatewayRunIdHeader(result.toUIMessageStreamResponse({ sendReasoning: true }), runIdFetch),
+      withLovableAiGatewayRunIdHeader(result.toUIMessageStreamResponse({
+        sendReasoning: true,
+        onError: (e) => {
+          const status = (e as { statusCode?: number })?.statusCode;
+          if (status === 402) return "402: AI credits are exhausted.";
+          if (status === 429) return "429: Rate limited.";
+          if (status === 403) return "403: AI access is blocked for this workspace.";
+          return "The assistant couldn't respond.";
+        },
+      }), runIdFetch),
   };
 }

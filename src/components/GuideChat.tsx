@@ -29,7 +29,7 @@ export default function GuideChat({ snapshot }: { snapshot: Record<string, unkno
     transport: new DefaultChatTransport({ api: "/api/chat", body: () => ({ snapshot: snapRef.current }) }),
     onError: (e) => {
       const m = e.message || "";
-      setError(m.includes("402") ? "AI credits are exhausted. Add credits in Settings → Plans & credits." : m.includes("429") ? "Too many requests — please wait a moment and try again." : "The assistant couldn't respond. Check your connection and try again.");
+      setError(m.includes("402") ? "AI credits are exhausted. Add credits in Settings → Plans & credits." : m.includes("403") ? "AI access is blocked for this workspace (check workspace AI settings)." : m.includes("429") ? "Too many requests — please wait a moment and try again." : "The assistant couldn't respond. Check your connection and try again.");
     },
   });
 
