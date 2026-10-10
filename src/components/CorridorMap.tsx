@@ -15,8 +15,8 @@ export default function CorridorMap({ segment, level, onSelect }: { segment: Seg
     import("leaflet").then((L) => {
       if (cancelled || !el.current || mapRef.current) return;
       const map = L.map(el.current, { zoomControl: true }).setView([segment.lat, segment.lon], 12);
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
-        attribution: "&copy; OpenStreetMap &copy; CARTO",
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; OpenStreetMap contributors",
       }).addTo(map);
       mapRef.current = map;
       layerRef.current = L.layerGroup().addTo(map);

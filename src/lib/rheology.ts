@@ -81,7 +81,7 @@ export function masterCurve(T: number, b: BinderParams, ref: BinderParams) {
   const pts = [];
   for (let e = -2; e <= 2.01; e += 0.1) {
     const f = Math.pow(10, e);
-    pts.push({ f, bio: gStar(f, T, b).G, ref: gStar(f, T, ref).G });
+    pts.push({ f, bio: gStar(f, T, b).G, baseline: gStar(f, T, ref).G });
   }
   return pts;
 }
