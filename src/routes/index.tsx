@@ -8,6 +8,7 @@ import { BINDERS, type BinderId, loadingFrequency, pavementTemps, gStar, jnr, re
 import { SEGMENTS, simulateTraffic, fetchWeather, type TrafficMode, type Weather } from "@/lib/corridors";
 
 const CorridorMap = lazy(() => import("@/components/CorridorMap"));
+const GuideChat = lazy(() => import("@/components/GuideChat"));
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -268,6 +269,23 @@ function Index() {
           </div>
         </section>
       </main>
+      <section className="mx-auto max-w-[1600px] px-4 pb-6">
+        <ClientOnly fallback={<div className="panel h-[560px]" />}>
+          <Suspense fallback={<div className="panel h-[560px]" />}>
+            <GuideChat snapshot={{
+              corridor: `${seg.name} (${seg.highway})`, esaFactor: seg.esa, binder: binder.label, trafficMode: mode,
+              speedKmh: speed, hcvPercent: hcv, weather: w,
+              pulseMs: isFinite(calc.tPulse) ? +(calc.tPulse * 1000).toFixed(2) : null, freqHz: +calc.freq.toFixed(3),
+              surfaceC: +calc.surface.toFixed(2), depth20C: +calc.depth20.toFixed(2),
+              gStarKPa: +calc.bio.G.toFixed(2), deltaDeg: +calc.bio.delta.toFixed(2),
+              refGStarKPa: +calc.std.G.toFixed(2), refDeltaDeg: +calc.std.delta.toFixed(2),
+              rri: +calc.risk.value.toFixed(4), rriLevel: calc.risk.level, refRri: +calc.riskRef.value.toFixed(4),
+              jnr: +calc.jnrBio.toFixed(3), refJnr: +calc.jnrRef.toFixed(3), recoveryPct: +calc.recBio.toFixed(1), refRecoveryPct: +calc.recRef.toFixed(1),
+              rutGauge: +rutPct.toFixed(1), fatigueGauge: +calc.fatigue.toFixed(1), healingGauge: +calc.healing.toFixed(1),
+            }} />
+          </Suspense>
+        </ClientOnly>
+      </section>
     </div>
   );
 }
