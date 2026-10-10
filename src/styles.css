@@ -124,3 +124,13 @@
 @keyframes strain { 0%,100% { transform: skewX(0deg); } 50% { transform: skewX(var(--skew, 8deg)); } }
 .animate-strain { animation: strain var(--dur, 1s) ease-in-out infinite; transform-origin: bottom; }
 body { font-family: var(--font-sans); }
+
+.guide-prose p { margin: 0.4rem 0; line-height: 1.6; }
+.guide-prose h1, .guide-prose h2, .guide-prose h3 { font-weight: 600; margin: 0.8rem 0 0.3rem; color: var(--primary); }
+.guide-prose ul, .guide-prose ol { padding-left: 1.2rem; margin: 0.4rem 0; list-style: disc; }
+.guide-prose ol { list-style: decimal; }
+.guide-prose code { font-family: var(--font-mono); background: var(--secondary); padding: 0 0.25rem; border-radius: 0.25rem; }
+.guide-prose a { color: var(--primary); text-decoration: underline; }
+.guide-prose table { border-collapse: collapse; margin: 0.5rem 0; font-size: 0.8rem; }
+.guide-prose th, .guide-prose td { border: 1px solid var(--border); padding: 0.25rem 0.5rem; }
+.guide-prose .katex-display { overflow-x: auto; padding: 0.25rem 0; }
