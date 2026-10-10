@@ -213,8 +213,8 @@ function Index() {
           <div className="panel">
             <div className="panel-title">|G*| Master Curve @ {calc.depth20.toFixed(1)}°C</div>
             <div className="h-56">
-              <ResponsiveContainer>
-                <LineChart data={calc.curve} margin={{ left: 0, right: 8, top: 4, bottom: 0 }}>
+              
+                <LineChart width={380} height={220} data={calc.curve} margin={{ left: 0, right: 8, top: 4, bottom: 0 }}>
                   <CartesianGrid stroke="var(--border)" />
                   <XAxis dataKey="f" type="number" scale="log" domain={[0.01, 100]} ticks={[0.01, 0.1, 1, 10, 100]} stroke="var(--muted-foreground)" fontSize={10} />
                   <YAxis scale="log" domain={["auto", "auto"]} stroke="var(--muted-foreground)" fontSize={10} tickFormatter={(v) => v >= 1000 ? `${(v / 1000).toFixed(0)}M` : v.toFixed(1)} allowDataOverflow />
@@ -223,7 +223,7 @@ function Index() {
                   <Line dataKey="bio" name={binder.short} stroke="var(--chart-1)" dot={false} strokeWidth={2} />
                   <ReferenceDot x={Math.min(100, calc.freq)} y={calc.bio.G} r={6} fill="var(--accent)" stroke="none" className="animate-blink" />
                 </LineChart>
-              </ResponsiveContainer>
+              
             </div>
             <div className="mt-2 grid grid-cols-2 gap-2 font-mono text-xs">
               <div>|G*| {calc.bio.G.toFixed(2)} kPa · δ {calc.bio.delta.toFixed(1)}°</div>
@@ -234,20 +234,20 @@ function Index() {
           <div className="panel">
             <div className="panel-title">MSCR 3.2 kPa · Jnr & Recovery</div>
             <div className="h-48">
-              <ResponsiveContainer>
-                <BarChart data={[
+              
+                <BarChart width={380} height={190} data={[
                   { name: "Jnr (kPa⁻¹)", ref: +calc.jnrRef.toFixed(2), bio: +calc.jnrBio.toFixed(2) },
                   { name: "R / 10 (%)", ref: +(calc.recRef / 10).toFixed(2), bio: +(calc.recBio / 10).toFixed(2) },
                 ]}>
                   <CartesianGrid stroke="var(--border)" vertical={false} />
                   <XAxis dataKey="name" stroke="var(--muted-foreground)" fontSize={10} />
                   <YAxis stroke="var(--muted-foreground)" fontSize={10} />
-                  
+                  <Tooltip contentStyle={{ background: "var(--card)", border: "1px solid var(--border)" }} />
                   <Legend wrapperStyle={{ fontSize: 11 }} />
                   <Bar dataKey="ref" name="Pen 80/100" fill="var(--chart-5)" radius={[3, 3, 0, 0]} />
                   <Bar dataKey="bio" name={binder.short} fill="var(--chart-1)" radius={[3, 3, 0, 0]} />
                 </BarChart>
-              </ResponsiveContainer>
+              
             </div>
           </div>
 
