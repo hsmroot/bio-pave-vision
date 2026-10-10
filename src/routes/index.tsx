@@ -234,7 +234,20 @@ function Index() {
           <div className="panel">
             <div className="panel-title">MSCR 3.2 kPa · Jnr & Recovery</div>
             <div className="h-48">
-              <div/>
+              <ResponsiveContainer>
+                <BarChart data={[
+                  { name: "Jnr (kPa⁻¹)", ref: +calc.jnrRef.toFixed(2), bio: +calc.jnrBio.toFixed(2) },
+                  { name: "R / 10 (%)", ref: +(calc.recRef / 10).toFixed(2), bio: +(calc.recBio / 10).toFixed(2) },
+                ]}>
+                  <CartesianGrid stroke="var(--border)" vertical={false} />
+                  <XAxis dataKey="name" stroke="var(--muted-foreground)" fontSize={10} />
+                  <YAxis stroke="var(--muted-foreground)" fontSize={10} />
+                  <Tooltip contentStyle={{ background: "var(--card)", border: "1px solid var(--border)" }} />
+                  <Legend wrapperStyle={{ fontSize: 11 }} />
+                  <Bar dataKey="ref" name="Pen 80/100" fill="var(--chart-5)" radius={[3, 3, 0, 0]} isAnimationActive={false} />
+                  <Bar dataKey="bio" name={binder.short} fill="var(--chart-1)" radius={[3, 3, 0, 0]} isAnimationActive={false} />
+                </BarChart>
+              </ResponsiveContainer>
             </div>
           </div>
 
