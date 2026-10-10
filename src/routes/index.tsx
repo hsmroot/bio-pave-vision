@@ -243,9 +243,9 @@ function Index() {
                   <XAxis dataKey="name" stroke="var(--muted-foreground)" fontSize={10} />
                   <YAxis stroke="var(--muted-foreground)" fontSize={10} />
                   <Tooltip contentStyle={{ background: "var(--card)", border: "1px solid var(--border)" }} />
-                  <Legend wrapperStyle={{ fontSize: 11 }} />
-                  <Bar dataKey="ref" name="Pen 80/100" fill="var(--chart-5)" radius={[3, 3, 0, 0]} isAnimationActive={false} />
-                  <Bar dataKey="bio" name={binder.short} fill="var(--chart-1)" radius={[3, 3, 0, 0]} isAnimationActive={false} />
+                  
+                  <Bar dataKey="ref" name="Pen 80/100" fill="var(--chart-5)" radius={[3, 3, 0, 0]} />
+                  <Bar dataKey="bio" name={binder.short} fill="var(--chart-1)" radius={[3, 3, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
