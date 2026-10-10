@@ -221,7 +221,7 @@ function Index() {
                   <Tooltip contentStyle={{ background: "var(--card)", border: "1px solid var(--border)" }} formatter={(v) => `${Number(v).toFixed(2)} kPa`} labelFormatter={(f) => `${Number(f).toFixed(2)} Hz`} />
                   <Line dataKey="ref" name="Pen 80/100" stroke="var(--chart-5)" dot={false} strokeDasharray="4 3" />
                   <Line dataKey="bio" name={binder.short} stroke="var(--chart-1)" dot={false} strokeWidth={2} />
-                  
+                  <ReferenceDot x={Math.min(100, calc.freq)} y={calc.bio.G} r={6} fill="var(--accent)" stroke="none" className="animate-blink" />
                 </LineChart>
               </ResponsiveContainer>
             </div>
@@ -242,7 +242,7 @@ function Index() {
                   <CartesianGrid stroke="var(--border)" vertical={false} />
                   <XAxis dataKey="name" stroke="var(--muted-foreground)" fontSize={10} />
                   <YAxis stroke="var(--muted-foreground)" fontSize={10} />
-                  <Tooltip contentStyle={{ background: "var(--card)", border: "1px solid var(--border)" }} />
+                  
                   <Legend wrapperStyle={{ fontSize: 11 }} />
                   <Bar dataKey="ref" name="Pen 80/100" fill="var(--chart-5)" radius={[3, 3, 0, 0]} />
                   <Bar dataKey="bio" name={binder.short} fill="var(--chart-1)" radius={[3, 3, 0, 0]} />
